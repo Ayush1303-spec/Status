@@ -25,9 +25,14 @@ public class Status {
     {
     Scanner in =new Scanner(System.in);
     System.out.println("Enter the user status code (zero,one,two,three) in string");
-    String code = in.next();
-    StausUser t= new StausUser();
-    t.statusDetail(code); 
+    String code = in.next().toupperCase();
+    try {
+            StatusCode statusCode = StatusCode.valueOf(code);
+            StatusUser t = new StatusUser();
+            t.statusDetail(statusCode);
+        } catch (IllegalArgumentException e) {
+            System.out.println("NOT VALID CODE");
+        }
     }
     
 }
